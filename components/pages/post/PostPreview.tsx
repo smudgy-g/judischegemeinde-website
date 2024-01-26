@@ -6,7 +6,7 @@ import { postBySlugQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
 import { PostPayload } from '@/types'
 
-import ProjectPage from './ProjectPage'
+import ProjectPage from './PostPage'
 
 type Props = {
   params: { slug: string }

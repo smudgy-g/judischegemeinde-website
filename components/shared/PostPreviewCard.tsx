@@ -1,5 +1,13 @@
 import Link from 'next/link'
 
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card'
 import { PostPayload } from '@/types'
 
 import AuthorAvatar from './AuthorAvatar'
@@ -15,22 +23,26 @@ export default function PostPreviewCard({
   slug,
 }: Omit<PostPayload, '_id'>) {
   return (
-    <div>
-      <div className="mb-5">
+    <Card>
+      <CardHeader>
         <Link href={`/posts/${slug}`} className="hover:underline">
           <ImageBox alt={title} image={coverImage} />
         </Link>
-      </div>
-      <h3 className="mb-3 text-3xl leading-snug">
-        <Link href={`/posts/${slug}`} className="hover:underline">
-          {title}
-        </Link>
-      </h3>
-      <div className="mb-4 text-lg">
-        {date && <PostDate dateString={date} />}
-      </div>
-      {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-      {author && <AuthorAvatar name={author.name} picture={author.picture} />}
-    </div>
+        <CardTitle>
+          <Link href={`/posts/${slug}`} className="hover:underline">
+            {title}
+          </Link>
+        </CardTitle>
+        <CardDescription>
+          {date && <PostDate dateString={date} />}
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
+      </CardContent>
+      <CardFooter>
+        {author && <AuthorAvatar name={author.name} picture={author.picture} />}
+      </CardFooter>
+    </Card>
   )
 }

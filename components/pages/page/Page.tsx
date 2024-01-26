@@ -7,7 +7,6 @@ export interface PageProps {
 }
 
 export function Page({ data }: PageProps) {
-  // Default to an empty object to allow previews on non-existent documents
   const { body, overview, title } = data ?? {}
 
   return (
@@ -19,7 +18,7 @@ export function Page({ data }: PageProps) {
         {/* Body */}
         {body && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-gray-600 text-xl"
+            paragraphClasses="font-serif max-w-2xl text-gray-600 text-lg mx-auto"
             value={body}
           />
         )}

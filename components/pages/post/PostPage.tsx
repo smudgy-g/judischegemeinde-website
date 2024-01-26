@@ -12,43 +12,31 @@ export interface ProjectPageProps {
 }
 
 export function PostPage({ data, encodeDataAttribute }: ProjectPageProps) {
-  const {
-    coverImage,
-    title,
-    author,
-    content,
-    excerpt,
-    date
-  } = data ?? {}
+  const { coverImage, title, author, content, excerpt, date } = data ?? {}
 
   return (
-    <div>
+    <>
       <div className="mb-20 space-y-6">
-        {/* Header */}
         <Header title={title} description={excerpt} />
 
         <div className="rounded-md border">
-          {/* Image  */}
           <ImageBox
             data-sanity={encodeDataAttribute?.('coverImage')}
             image={coverImage}
             alt={`${title} cover image`}
             classesWrapper="relative aspect-[16/9]"
           />
-
-          
         </div>
 
-        {/* Description */}
         {content && (
           <CustomPortableText
-            paragraphClasses="font-serif max-w-3xl text-xl text-gray-600"
+            paragraphClasses="font-serif max-w-2xl text-lg text-gray-600 mx-auto"
             value={content}
           />
         )}
       </div>
-      <div className="absolute left-0 w-screen border-t" />
-    </div>
+      
+    </>
   )
 }
 

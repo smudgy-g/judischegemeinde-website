@@ -25,17 +25,14 @@ export default function HeroImageBox(props: CoverImageProps) {
       })}
     >
       {source && (
-        <Link href={`/posts/${slug}`} download>
-          <ImageBox
-            classesWrapper="h-auto w-full"
-            width={2000}
-            height={1000}
-            alt={`${title} cover image`}
-            // src={urlForImage(source).height(1000).width(2000).url()}
-            imagePlaceholder={source.lqip}
-            image={source}
-          />
-        </Link>
+        <ImageBox
+          classesWrapper="h-auto w-full"
+          width={2000}
+          height={1000}
+          alt={`${title} cover image`}
+          imagePlaceholder={source.lqip}
+          image={source}
+        />
       )}
     </div>
   ) : (

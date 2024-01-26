@@ -29,6 +29,7 @@ export const pagesBySlugQuery = groq`
 export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
+    title,
     menuItems[]->{
       _type,
       "slug": slug.current,

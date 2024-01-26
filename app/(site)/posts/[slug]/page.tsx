@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { PostPage } from '@/components/pages/project/ProjectPage'
+import { PostPage } from '@/components/pages/post/PostPage'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs'
 import { loadPost } from '@/sanity/loader/loadQuery'
 
 const ProjectPreview = dynamic(
-  () => import('@/components/pages/project/ProjectPreview'),
+  () => import('@/components/pages/post/PostPreview'),
 )
 
 type Props = {
@@ -38,7 +38,7 @@ export async function generateMetadata(
 }
 
 export function generateStaticParams() {
-  return generateStaticSlugs('project')
+  return generateStaticSlugs('post')
 }
 
 export default async function PostSlugRoute({ params }: Props) {

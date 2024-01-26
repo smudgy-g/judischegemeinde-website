@@ -21,11 +21,11 @@ export default function HeroPost(
       </div>
       <div className="mb-20 md:mb-28 md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8">
         <div>
-          <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
-            <Link href={`/posts/${slug}`} className="hover:underline">
+          <Link href={`/posts/${slug}`} className="hover:underline">
+            <h3 className="mb-4 text-4xl leading-tight lg:text-6xl">
               {title || 'Untitled'}
-            </Link>
-          </h3>
+            </h3>
+          </Link>
           <div className="mb-4 text-lg md:mb-0">
             <PostDate dateString={date!} />
           </div>
@@ -33,7 +33,7 @@ export default function HeroPost(
         <div>
           {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
           {author && (
-              <AuthorAvatar name={author.name} picture={author.picture} />
+            <AuthorAvatar name={author.name} picture={author.picture} />
           )}
         </div>
       </div>

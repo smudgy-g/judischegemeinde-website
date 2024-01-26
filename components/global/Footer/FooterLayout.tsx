@@ -9,8 +9,11 @@ interface FooterProps {
 export default function Footer(props: FooterProps) {
   const { data } = props
   const footer = data?.footer || ([] as PortableTextBlock[])
+  const title = data?.title || ""
+  console.log(data)
   return (
-    <footer className="bottom-0 w-full bg-white py-5 text-center md:py-3">
+    <footer className="bottom-0 w-full flex justify-between bg-white px-6 py-5 border-t md:py-3">
+      {title && <h2 className="text-3xl font-extrabold tracking-tight sm:text-2xl">{title}</h2>}
       {footer && (
         <CustomPortableText
           paragraphClasses="text-md md:text-xl"
