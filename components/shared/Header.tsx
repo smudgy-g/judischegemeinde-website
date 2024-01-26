@@ -2,7 +2,7 @@ import { CustomPortableText } from '@/components/shared/CustomPortableText'
 
 interface HeaderProps {
   centered?: boolean
-  description?: any[]
+  description?: any
   title?: string
 }
 export function Header(props: HeaderProps) {
@@ -21,7 +21,11 @@ export function Header(props: HeaderProps) {
       {/* Description */}
       {description && (
         <div className="mt-4 font-serif text-xl text-gray-600 md:text-2xl">
-          <CustomPortableText value={description} />
+          {typeof description == 'string' ? (
+            <p>{description}</p>
+          ) : (
+            <CustomPortableText value={description} />
+          )}
         </div>
       )}
     </div>

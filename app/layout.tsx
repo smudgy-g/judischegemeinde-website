@@ -1,6 +1,8 @@
-import 'tailwindcss/tailwind.css'
+import './globals.css'
 
-import { IBM_Plex_Mono, Inter, PT_Serif } from 'next/font/google'
+import { PT_Serif, Raleway } from 'next/font/google'
+
+import { cn } from '@/lib/utils'
 
 const serif = PT_Serif({
   variable: '--font-serif',
@@ -8,16 +10,9 @@ const serif = PT_Serif({
   subsets: ['latin'],
   weight: ['400', '700'],
 })
-const sans = Inter({
+const sans = Raleway({
   variable: '--font-sans',
   subsets: ['latin'],
-  // @todo: understand why extrabold (800) isn't being respected when explicitly specified in this weight array
-  // weight: ['500', '700', '800'],
-})
-const mono = IBM_Plex_Mono({
-  variable: '--font-mono',
-  subsets: ['latin'],
-  weight: ['500', '700'],
 })
 
 export default async function RootLayout({
@@ -28,9 +23,13 @@ export default async function RootLayout({
   return (
     <html
       lang="en"
-      className={`${mono.variable} ${sans.variable} ${serif.variable}`}
+      className={cn(
+        'min-h-screen bg-background font-sans antialiased',
+        sans.variable,
+        serif.variable,
+      )}
     >
-      <body>{children}</body>
+      <body className="relative">{children}</body>
     </html>
   )
 }

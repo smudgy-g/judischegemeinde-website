@@ -9,7 +9,7 @@ interface ImageBoxProps {
   height?: number
   size?: string
   classesWrapper?: string
-  'data-sanity'?: string
+  imagePlaceholder?: string;
 }
 
 export default function ImageBox({
@@ -19,6 +19,7 @@ export default function ImageBox({
   height = 2000,
   size = '100vw',
   classesWrapper,
+  imagePlaceholder,
   ...props
 }: ImageBoxProps) {
   const imageUrl =
@@ -27,16 +28,20 @@ export default function ImageBox({
   return (
     <div
       className={`w-full overflow-hidden rounded-[3px] bg-gray-50 ${classesWrapper}`}
-      data-sanity={props['data-sanity']}
     >
       {imageUrl && (
         <Image
-          className="absolute h-full w-full"
+          className="h-full w-full"
           alt={alt}
           width={width}
           height={height}
           sizes={size}
           src={imageUrl}
+          {...(imagePlaceholder && {
+            blurDataURL: imagePlaceholder,
+            placeholder: "blur",
+          })}
+          
         />
       )}
     </div>

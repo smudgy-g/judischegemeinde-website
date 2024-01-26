@@ -1,5 +1,3 @@
-import '@/styles/index.css'
-
 import { toPlainText } from '@portabletext/react'
 import { Metadata, Viewport } from 'next'
 import dynamic from 'next/dynamic'
@@ -8,7 +6,6 @@ import { Suspense } from 'react'
 
 import { Footer } from '@/components/global/Footer'
 import { Navbar } from '@/components/global/Navbar'
-import IntroTemplate from '@/intro-template'
 import { urlForOpenGraphImage } from '@/sanity/lib/utils'
 import { loadHomePage, loadSettings } from '@/sanity/loader/loadQuery'
 
@@ -25,7 +22,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title: homePage?.title
       ? {
           template: `%s | ${homePage.title}`,
-          default: homePage.title || 'Personal website',
+          default: homePage.title || 'Judischegemeinde Website',
         }
       : undefined,
     description: homePage?.overview
@@ -46,6 +43,7 @@ export default async function IndexRoute({
 }: {
   children: React.ReactNode
 }) {
+  
   return (
     <>
       <div className="flex min-h-screen flex-col bg-white text-black">
@@ -58,7 +56,6 @@ export default async function IndexRoute({
         <Suspense>
           <Footer />
         </Suspense>
-        <IntroTemplate />
       </div>
       {draftMode().isEnabled && <VisualEditing />}
     </>

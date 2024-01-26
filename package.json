@@ -15,7 +15,10 @@
     "singleQuote": true
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.3.4",
     "@portabletext/react": "3.0.11",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@sanity/demo": "1.0.2",
     "@sanity/image-url": "1.0.2",
     "@sanity/overlays": "2.3.7",
@@ -23,16 +26,23 @@
     "@sanity/react-loader": "1.7.6",
     "@sanity/vision": "3.26.0",
     "@tailwindcss/typography": "0.5.10",
+    "class-variance-authority": "^0.7.0",
     "classnames": "2.5.1",
+    "clsx": "^2.1.0",
     "date-fns": "2.30.0",
+    "lucide-react": "^0.314.0",
     "next": "14.1.0",
     "next-sanity": "7.0.12",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.49.3",
     "sanity": "3.26.0",
     "sanity-plugin-asset-source-unsplash": "1.1.2",
     "server-only": "0.0.1",
-    "styled-components": "6.1.8"
+    "styled-components": "6.1.8",
+    "tailwind-merge": "^2.2.1",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/react": "18.2.48",

@@ -5,16 +5,18 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
+  allPostsQuery,
   homePageQuery,
   pagesBySlugQuery,
-  projectBySlugQuery,
+  postAndMoreStoriesQuery,
+  postBySlugQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
   HomePagePayload,
   PagePayload,
-  ProjectPayload,
+  PostPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -68,7 +70,7 @@ export function loadSettings() {
   return loadQuery<SettingsPayload>(
     settingsQuery,
     {},
-    { next: { tags: ['settings', 'home', 'page', 'project'] } },
+    { next: { tags: ['settings', 'home', 'page', 'post'] } },
   )
 }
 
@@ -76,15 +78,23 @@ export function loadHomePage() {
   return loadQuery<HomePagePayload | null>(
     homePageQuery,
     {},
-    { next: { tags: ['home', 'project'] } },
+    { next: { tags: ['home', 'post'] } },
   )
 }
 
-export function loadProject(slug: string) {
-  return loadQuery<ProjectPayload | null>(
-    projectBySlugQuery,
+export function loadPost(slug: string) {
+  return loadQuery<PostPayload | null>(
+    postBySlugQuery,
     { slug },
-    { next: { tags: [`project:${slug}`] } },
+    { next: { tags: [`post:${slug}`] } },
+  )
+}
+
+export function loadPosts() {
+  return client.fetch<PostPayload[] | null>(
+    allPostsQuery,
+    {},
+    { token, perspective: 'published' },
   )
 }
 
