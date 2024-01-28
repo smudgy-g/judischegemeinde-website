@@ -24,16 +24,6 @@ export interface PagePayload {
 }
 
 
-
-// export interface SettingsPayload {
-//   title?: any
-//   footer?: PortableTextBlock[]
-//   description?: any[]
-//   ogImage?: Image
-//   menuItems?: MenuItem[];
-// }
-
-
 export interface AuthorPayload {
   name?: string
   picture?: any
@@ -58,5 +48,6 @@ export interface SettingsPayload {
   ogImage?: {
     title?: string
   }
+  menuItems?: MenuItem[];
   footer: PortableTextBlock[]
 }

@@ -1,12 +1,10 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 import Link from 'next/link'
 
-import { ProjectListItem } from '@/components/pages/home/ProjectListItem'
 import Collection from '@/components/shared/Collection'
-import { Header } from '@/components/shared/Header'
+import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import HeroPost from '@/components/shared/HeroPost'
-import { resolveHref } from '@/sanity/lib/utils'
-import type { HomePagePayload, PostPayload, SettingsPayload } from '@/types'
+import type { HomePagePayload, PostPayload } from '@/types'
 
 export interface HomePageProps {
   data: HomePagePayload | null
@@ -14,56 +12,48 @@ export interface HomePageProps {
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function HomePage({
-  data,
-  encodeDataAttribute,
-  posts,
-}: HomePageProps) {
-  const [heroPost, ...morePosts] = posts || [];
+export function HomePage({ data, encodeDataAttribute, posts }: HomePageProps) {
+  const [heroPost, ...morePosts] = posts || []
 
-  const { overview = [], title = "" } = data ?? {};
+  const { overview = [], title = '' } = data ?? {}
 
-  
   return (
-    <div className="space-y-20">
-      {/* Header */}
-      {title && <Header centered title={title} description={overview} />}
-      {heroPost && (
-        <HeroPost
-          title={heroPost.title}
-          coverImage={heroPost.coverImage}
-          // date={allPosts[0].date}
-          author={heroPost.author}
-          slug={heroPost.slug}
-          excerpt={heroPost.excerpt}
-        />
-      )}
-      {morePosts.length > 0 && <Collection posts={morePosts} />}
-      {/* Showcase projects */}
-      {/* {showcaseProjects && showcaseProjects.length > 0 && (
-        <div className="mx-auto max-w-[100rem] rounded-md border">
-          {showcaseProjects.map((project, key) => {
-            const href = resolveHref(project?._type, project?.slug)
-            if (!href) {
-              return null
-            }
-            return (
-              <Link
-                key={key}
-                href={href}
-                data-sanity={encodeDataAttribute?.([
-                  'showcaseProjects',
-                  key,
-                  'slug',
-                ])}
-              >
-                <ProjectListItem project={project} odd={key % 2} />
-              </Link>
-            )
-          })}
+    <>
+      <section className="bg-gradient-to-tl from-indigo-200 via-red-200 to-yellow-100 wrapper h-[70vh] md:h-[60vh] flex flex-col items-center justify-center p-4">
+        <div className=" bg-white border border-black sharp-shadow p-4 md:px-8 lg:px-12 py-12 md:py-20">
+          {title && <h1 className="h1-extrabold">{title}</h1>}
+          {overview && (
+            <div className="mt-12">
+              <CustomPortableText
+                value={overview}
+                paragraphClasses="text-xl lg:text-3xl"
+              />
+            </div>
+          )}
         </div>
-      )} */}
-    </div>
+        {/* Header */}
+      </section>
+      <section className="wrapper mt-10 md:mt-8 lg:mt-6 flex flex-col md:flex-row gap-12">
+        <div className="flex-grow md:basis-2/3">
+          <h3 className="h2-bold">Latest</h3>
+          {heroPost && (
+            <HeroPost
+              title={heroPost.title}
+              coverImage={heroPost.coverImage}
+              author={heroPost.author}
+              slug={heroPost.slug}
+              excerpt={heroPost.excerpt}
+            />
+          )}
+        </div>
+        <div className="basis-1/3">
+          {morePosts.length > 0 && (
+            <Collection posts={morePosts} title="More" />
+          )}
+          <button>explore more posts</button>
+        </div>
+      </section>
+    </>
   )
 }
 

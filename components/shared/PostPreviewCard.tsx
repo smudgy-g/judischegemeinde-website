@@ -37,12 +37,14 @@ export default function PostPreviewCard({
           {date && <PostDate dateString={date} />}
         </CardDescription>
       </CardHeader>
-      <CardContent>
-        {excerpt && <p className="mb-4 text-lg leading-relaxed">{excerpt}</p>}
-      </CardContent>
-      <CardFooter>
-        {author && <AuthorAvatar name={author.name} picture={author.picture} />}
-      </CardFooter>
+        <CardContent>
+          {excerpt && <p className="mb-4 text-lg leading-relaxed line-clamp-2">{excerpt}</p>}
+        </CardContent>
+        <CardFooter>
+          {author && (
+            <AuthorAvatar name={author.name} picture={author.picture} />
+          )}
+        </CardFooter>
     </Card>
   )
 }

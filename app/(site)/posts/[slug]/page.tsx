@@ -23,7 +23,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const { data: post } = await loadPost(params.slug)
   const ogImage = urlForOpenGraphImage(post?.coverImage)
-  console.log(post)
   return {
     title: post?.title,
     description: post?.excerpt
