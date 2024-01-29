@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
@@ -36,12 +37,19 @@ const Search = () => {
   }, [query, router, searchParams])
 
   return (
-    <div className="flex-center min-h-[54px] w-full overflow-hidden rounded-2xl bg-grey-50 px-4 py-2">
-      
+    <div className="relative flex items-center w-full">
+      <Image
+        src="/assets/icons/search.svg"
+        alt="search"
+        width={24}
+        height={24}
+        className='absolute left-4'
+      />
       <Input
         type="text"
         placeholder="Search our posts..."
         onChange={(e) => setQuery(e.target.value)}
+        className='pl-12'
       />
     </div>
   )

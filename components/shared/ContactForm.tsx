@@ -36,11 +36,12 @@ const ContactForm = () => {
   })
 
   function onSubmit(values: z.infer<typeof contactFormSchema>) {
+    form.reset()
     console.log(values)
     const name = values?.name
     toast({
-      title: 'Vielen dank!',
-      description: `We will get back to you as soon as possible, ${name}.`,
+      title: `Vielen dank, ${name}`,
+      description: `We will get back to you as soon as possible.`,
     })
   }
   return (

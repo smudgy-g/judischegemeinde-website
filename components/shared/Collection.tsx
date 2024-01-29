@@ -16,6 +16,7 @@ export default function Collection({
           {title}
         </h2>
       )}
+      {posts.length > 0 ? (
       <div className="mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {posts.map((post) => (
           <PostPreviewCard
@@ -29,6 +30,12 @@ export default function Collection({
           />
         ))}
       </div>
+      ) : (
+        <div className="flex items-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
+          <h3 className="h3-bold md:h5-bold">There are currently no posts</h3>
+          <p className="">Please come back later.</p>
+        </div>
+      )}
     </section>
   )
 }

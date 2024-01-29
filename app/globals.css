@@ -89,7 +89,7 @@
 }
 
 .hamburger-box {
-  width: 40px;
+  width: 24px;
   height: 24px;
   display: inline-block;
   position: relative;
@@ -103,8 +103,8 @@
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
-  width: 40px;
-  height: 4px;
+  width: 24px;
+  height: 2px;
   background-color: #000;
   border-radius: 4px;
   position: absolute;
@@ -118,10 +118,10 @@
   display: block;
 }
 .hamburger-inner::before {
-  top: -10px;
+  top: -8px;
 }
 .hamburger-inner::after {
-  bottom: -10px;
+  bottom: -8px;
 }
 
 .hamburger--spin .hamburger-inner {

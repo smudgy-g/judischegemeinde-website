@@ -1,14 +1,12 @@
 'use client'
 
-import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
-import NavItems from './NavItems'
 import HamburgerButton from './HamburgerButton'
+import NavItems from './NavItems'
 
 const MobileNav = () => {
-  const pathname = usePathname()
   const [isMobileNavOpen, setMobileNavOpen] = useState(false)
 
   const toggleMobileNav = () => {

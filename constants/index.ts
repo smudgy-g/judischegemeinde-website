@@ -4,6 +4,10 @@ export const navLinks = [
     route: '/',
   },
   {
+    label: 'Posts',
+    route: '/posts',
+  },
+  {
     label: 'About',
     route: '/about',
   },

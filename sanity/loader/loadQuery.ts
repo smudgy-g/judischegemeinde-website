@@ -8,6 +8,7 @@ import {
   aboutPageQuery,
   allPostsQuery,
   homePageQuery,
+  loadPostsQuery,
   pagesBySlugQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
@@ -103,22 +104,12 @@ export function loadPost(slug: string) {
 }
 
 export async function loadPosts(query: string) {
-  if (!query) {
-    const posts = await loadQuery<PostPayload[] | null>(
-      allPostsQuery,
-      {},
-      { next: { tags: ['post'] } },
-    )
-    return posts.data
-  } else {
-    const posts = await loadQuery<PostPayload[]>(
-      searchPostsQuery,
-      { query: `${query}*` },
-      { next: { tags: ['post'] } },
-    )
-    console.log(posts.data)
-    return posts.data
-  }
+  const posts = await loadQuery<PostPayload[]>(
+    loadPostsQuery,
+    { query: `${query}*` },
+    { next: { tags: ['post'] } },
+  )
+  return posts.data
 }
 
 export function loadPage(slug: string) {

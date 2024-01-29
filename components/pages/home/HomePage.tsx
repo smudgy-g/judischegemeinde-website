@@ -21,7 +21,7 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
     <>
       <section className="wrapper h-[70vh] md:h-[60vh] flex flex-col items-center justify-center p-4 z-1">
         <div className="bg-gradient-to-tl from-blue-100 via-blue-300 to-blue-500 absolute -top-[60px] h-[55vh] min-h-[320px] max-h-[480px] w-full -skew-y-6 flex flex-col overflow-hidden z-0"></div>
-        <div className="relative flex flex-col justify-evenly px-3 md:px-8 mt-12 min-h-[300px] h-[60vh] max-h-[700px] w-full max-w-2xl bg-white border border-black">
+        <div className="relative flex flex-col justify-evenly px-3 md:px-8 mt-12 py-6 w-full max-w-2xl bg-white border border-black">
           {title && <h1 className="h1-extrabold relative mb-10">{title}</h1>}
           {overview && (
             <>
