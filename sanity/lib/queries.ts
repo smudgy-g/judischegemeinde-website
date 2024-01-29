@@ -90,7 +90,6 @@ export const searchPostsQuery = groq`
   | score(pt::text(content) match $query, boost(title match $query, 3), boost(excerpt match $query, 2)) {
     ${postFields}
   }
-  [ _score > 0 ]
 `
 
 export const postAndMoreStoriesQuery = groq`
