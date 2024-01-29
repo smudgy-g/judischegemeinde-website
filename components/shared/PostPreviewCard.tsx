@@ -39,7 +39,7 @@ export default function PostPreviewCard({
         </CardDescription>
       </CardHeader>
         <CardContent>
-          {excerpt && <p className="mb-4 text-lg leading-relaxed line-clamp-2">{excerpt}</p>}
+          {excerpt && <p className="mb-4 text-sm md:text-md leading-relaxed line-clamp-3">{excerpt}</p>}
         </CardContent>
         <CardFooter className="flex justify-between">
           {author && (
