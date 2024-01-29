@@ -79,12 +79,19 @@ export const aboutPageQuery = groq`
 
 
 
-// export const settingsQuery = groq`*[_type == "settings"][0]`
 
 export const allPostsQuery = groq`
 *[_type == "post"] | order(date desc, _updatedAt desc) {
   ${postFields}
 }`
+
+export const searchPostsQuery = groq`
+*[_type == "post" && (pt::text(content) match $query || title match $query || excerpt match $query)] 
+  | score(pt::text(content) match $query, boost(title match $query, 3), boost(excerpt match $query, 2)) {
+    ${postFields}
+  }
+  [ _score > 0 ]
+`
 
 export const postAndMoreStoriesQuery = groq`
 {

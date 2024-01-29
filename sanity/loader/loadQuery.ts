@@ -11,6 +11,7 @@ import {
   pagesBySlugQuery,
   postAndMoreStoriesQuery,
   postBySlugQuery,
+  searchPostsQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
@@ -101,12 +102,23 @@ export function loadPost(slug: string) {
   )
 }
 
-export function loadPosts() {
-  return client.fetch<PostPayload[] | null>(
-    allPostsQuery,
-    {},
-    { token, perspective: 'published' },
-  )
+export async function loadPosts(query: string) {
+  if (!query) {
+    const posts = await loadQuery<PostPayload[] | null>(
+      allPostsQuery,
+      {},
+      { next: { tags: ['post'] } },
+    )
+    return posts.data
+  } else {
+    const posts = await loadQuery<PostPayload[]>(
+      searchPostsQuery,
+      { query: `${query}*` },
+      { next: { tags: ['post'] } },
+    )
+    console.log(posts.data)
+    return posts.data
+  }
 }
 
 export function loadPage(slug: string) {
