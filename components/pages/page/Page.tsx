@@ -10,12 +10,12 @@ export function Page({ data }: PageProps) {
   const { body, overview, title } = data ?? {}
 
   return (
-    <div>
-      <div className="mb-14">
-        {/* Header */}
-        <Header title={title} description={overview} />
+    <div className="mb-14 wrapper mt-20">
+      {/* Header */}
+      <Header title={title} description={overview} />
 
-        {/* Body */}
+      {/* Body */}
+      <div className="mt-20 space-y-8">
         {body && (
           <CustomPortableText
             paragraphClasses="font-serif max-w-2xl text-gray-600 text-lg mx-auto"
@@ -23,7 +23,6 @@ export function Page({ data }: PageProps) {
           />
         )}
       </div>
-      <div className="absolute left-0 w-screen border-t" />
     </div>
   )
 }

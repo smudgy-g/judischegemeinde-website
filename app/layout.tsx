@@ -2,6 +2,7 @@ import './globals.css'
 
 import { PT_Serif, Raleway } from 'next/font/google'
 
+import { Toaster } from "@/components/ui/toaster"
 import { cn } from '@/lib/utils'
 
 const serif = PT_Serif({
@@ -30,6 +31,7 @@ export default async function RootLayout({
       )}
     >
       <body className="relative">{children}</body>
+      <Toaster />
     </html>
   )
 }

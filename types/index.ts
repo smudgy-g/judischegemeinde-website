@@ -7,11 +7,24 @@ export interface MenuItem {
   title?: string;
 }
 
+export interface LinkPayload {
+  href: string;
+  name: string;
+}
+
 // Page payloads
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
+  showcasePosts?: PostPayload[]
+  title?: string
+}
+
+export interface AboutPagePayload {
+  overview?: PortableTextBlock[]
+  content?: PortableTextBlock[]
+  socialLinks?: LinkPayload[]
   title?: string
 }
 

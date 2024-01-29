@@ -30,7 +30,7 @@ export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
     title,
-    menuItems[]->{
+    link[]->{
       _type,
       "slug": slug.current,
       title
@@ -38,15 +38,6 @@ export const settingsQuery = groq`
     ogImage,
   }
 `
-
-
-export const homePageQuery = groq`
-  *[_type == "home"][0]{
-    _id,
-    overview,
-    title,
-  }
-`;
 
 const postFields = groq`
   _id,
@@ -63,6 +54,30 @@ const postFields = groq`
   "author": author->{name, picture},
   "video": video.asset->url
 `
+export const homePageQuery = groq`
+  *[_type == "home"][0]{
+    _id,
+    overview,
+    title,
+    showcasePosts[] -> {
+      ${postFields}
+    }
+  }
+`;
+
+export const aboutPageQuery = groq`
+  *[_type == "home"][0]{
+    _id,
+    overview,
+    title,
+    content,
+    socialLinks[] -> {
+      
+    }
+  }
+`;
+
+
 
 // export const settingsQuery = groq`*[_type == "settings"][0]`
 

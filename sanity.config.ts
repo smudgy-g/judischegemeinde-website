@@ -17,10 +17,11 @@ import settings from '@/sanity/schemas/singletons/settings'
 
 import author from './sanity/schemas/documents/author'
 import post from './sanity/schemas/documents/post'
+import about from './sanity/schemas/singletons/about'
+import link from './sanity/schemas/objects/link'
 
 const title =
-  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE ||
-  'Judischegemeinde Website'
+  process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Judischegemeinde Website'
 
 export default defineConfig({
   basePath: studioUrl,
@@ -31,17 +32,20 @@ export default defineConfig({
     // If you want more content types, you can add them to this array
     types: [
       // Singletons
+      about,
       home,
       settings,
       // Documents
       page,
       post,
       author,
+      // Objects
+      link,
     ],
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings]),
+      structure: pageStructure([home, settings, about]),
     }),
     presentationTool({
       locate,
@@ -52,7 +56,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name]),
+    singletonPlugin([home.name, settings.name, about.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

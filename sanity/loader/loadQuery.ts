@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 
 import { client } from '@/sanity/lib/client'
 import {
+  aboutPageQuery,
   allPostsQuery,
   homePageQuery,
   pagesBySlugQuery,
@@ -14,7 +15,9 @@ import {
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
+  AboutPagePayload,
   HomePagePayload,
+  MenuItem,
   PagePayload,
   PostPayload,
   SettingsPayload,
@@ -79,6 +82,14 @@ export function loadHomePage() {
     homePageQuery,
     {},
     { next: { tags: ['home', 'post'] } },
+  )
+}
+
+export function loadAboutPage() {
+  return loadQuery<AboutPagePayload | null>(
+    aboutPageQuery,
+    {},
+    { next: { tags: ['about'] } },
   )
 }
 

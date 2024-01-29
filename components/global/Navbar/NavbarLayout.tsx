@@ -13,7 +13,7 @@ export default function Navbar(props: NavbarProps) {
 
   
   return (
-    <div className="sticky top-0 z-10 flex items-center justify-between border-b border-b-black bg-white/80 px-4 backdrop-blur md:py-3 w-full">
+    <div className="sticky top-0 z-10 flex items-center justify-between border-b border-b-black bg-white px-4 backdrop-blur md:py-3 w-full">
       <Link href="/" className="text-2xl font-bold">
         Judischegemeinde
       </Link>

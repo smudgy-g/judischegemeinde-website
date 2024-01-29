@@ -18,7 +18,7 @@ const NavItems = ({
         return (
           <li
             key={link.route}
-            className={`${isActive && 'sm:text-blue-600 text-blue-900'} text-white md:text-current font-medium text-3xl md:text-lg px-5 py-3`}
+            className={`${isActive && 'text-primary'} font-medium text-3xl md:text-lg px-5 py-3`}
           >
             {toggleMobileNav ? (
               <Link href={link.route} onClick={toggleMobileNav}>

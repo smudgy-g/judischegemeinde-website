@@ -16,27 +16,28 @@ export default defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'menuItems',
-      title: 'Menu Item list',
-      description: 'Links displayed on the header of your site.',
-      type: 'array',
-      of: [
-        {
-          title: 'Reference',
-          type: 'reference',
-          to: [
-            {
-              type: 'home',
-            },
-            {
-              type: 'page',
-            },
+    // defineField({
+    //   name: 'menuItems',
+    //   title: 'Menu Item list',
+    //   description: 'Links displayed on the header of your site.',
+    //   type: 'array',
+    //   of: [
+    //     {
+    //       title: 'Reference',
+    //       type: 'reference',
+    //       to: [
+    //         {
+    //           type: 'home',
+    //         },
+    //         {
+    //           type: 'page',
+    //         },
            
-          ],
-        },
-      ],
-    }),
+    //       ],
+    //     },
+    //   ],
+    // }),
+    
     defineField({
       name: 'footer',
       description:

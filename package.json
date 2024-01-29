@@ -19,6 +19,7 @@
     "@portabletext/react": "3.0.11",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.1.5",
     "@sanity/demo": "1.0.2",
     "@sanity/image-url": "1.0.2",
     "@sanity/overlays": "2.3.7",

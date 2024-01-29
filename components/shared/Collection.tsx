@@ -16,7 +16,7 @@ export default function Collection({
           {title}
         </h2>
       )}
-      <div className="mb-32 grid grid-cols-1 gap-y-12">
+      <div className="mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
         {posts.map((post) => (
           <PostPreviewCard
             key={post._id}

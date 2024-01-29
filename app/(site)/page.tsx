@@ -11,7 +11,7 @@ const HomePagePreview = dynamic(
 )
 
 export default async function IndexRoute() {
-  const [initial, posts] = await Promise.all([loadHomePage(), loadPosts()])
+  const initial = await loadHomePage()
 
   if (draftMode().isEnabled) {
     return <HomePagePreview initial={initial} />
@@ -29,5 +29,5 @@ export default async function IndexRoute() {
     )
   }
 
-  return <HomePage data={initial.data} posts={posts} />
+  return <HomePage data={initial.data} />
 }

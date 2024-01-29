@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/card'
 import { PostPayload } from '@/types'
 
+import { Button } from '../ui/button'
 import AuthorAvatar from './AuthorAvatar'
 import ImageBox from './ImageBox'
 import PostDate from './PostDate'
@@ -40,10 +41,13 @@ export default function PostPreviewCard({
         <CardContent>
           {excerpt && <p className="mb-4 text-lg leading-relaxed line-clamp-2">{excerpt}</p>}
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex justify-between">
           {author && (
             <AuthorAvatar name={author.name} picture={author.picture} />
           )}
+          <Button asChild variant={'outline'} className='hidden md:visible'>
+            <Link href={`/posts/${slug}`}>Read more</Link>
+          </Button>
         </CardFooter>
     </Card>
   )
