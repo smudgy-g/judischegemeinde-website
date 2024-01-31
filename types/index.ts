@@ -1,13 +1,12 @@
 import type { PortableTextBlock } from '@portabletext/types'
-import type { Image } from 'sanity'
 
-export interface MenuItem {
-  _type: string;
-  slug?: string;
-  title?: string;
-}
+// export interface MenuItem {
+//   _type: string;
+//   slug?: string;
+//   title?: string;
+// }
 
-export interface LinkPayload {
+export interface Link {
   href: string;
   name: string;
 }
@@ -28,26 +27,28 @@ export interface Post {
 // Page payloads
 
 export interface HomePagePayload {
-  footer?: PortableTextBlock[]
-  overview?: PortableTextBlock[]
-  showcasePosts?: Post[]
   title?: string
+  heading?: string
+  overview?: PortableTextBlock[]
+  footer?: PortableTextBlock[]
+  showcasePosts?: Post[]
 }
 
 export interface AboutPagePayload {
+  title?: string
   overview?: PortableTextBlock[]
   content?: PortableTextBlock[]
-  socialLinks?: LinkPayload[]
-  title?: string
+  coverImage?: any
 }
 
-export interface PagePayload {
-  body?: PortableTextBlock[]
-  name?: string
-  overview?: PortableTextBlock[]
-  title?: string
-  slug?: string
-}
+// export interface PagePayload {
+//   content?: PortableTextBlock[]
+//   // heading?: string
+//   overview?: PortableTextBlock[]
+//   title?: string
+//   // slug?: string
+//   coverImage?: any
+// }
 
 
 export interface AuthorPayload {
@@ -62,10 +63,10 @@ export interface PostsQueryPayload {
 
 export interface SettingsPayload {
   title?: string
-  description?: any[]
+  socialLinks?: Link[];
+  // menuItems?: MenuItem[];
+  footer: PortableTextBlock[]
   ogImage?: {
     title?: string
   }
-  menuItems?: MenuItem[];
-  footer: PortableTextBlock[]
 }

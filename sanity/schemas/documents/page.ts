@@ -10,6 +10,8 @@ export default defineType({
     defineField({
       type: 'string',
       name: 'title',
+      description:
+        'Used as the title shown in the menu bar.',
       title: 'Title',
       validation: (rule) => rule.required(),
     }),
@@ -23,9 +25,17 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      type: 'string',
+      name: 'heading',
+      description:
+        'Used both for the <meta> description tag for SEO, and the page header.',
+      title: 'Heading',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and the website subheader.',
+        'Used both for the <meta> description tag for SEO, and the page subheader.',
       title: 'Overview',
       type: 'array',
       of: [
@@ -50,6 +60,14 @@ export default defineType({
         }),
       ],
       validation: (rule) => rule.max(155).required(),
+    }),
+    defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
     defineField({
       type: 'array',

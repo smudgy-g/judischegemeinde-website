@@ -10,14 +10,15 @@ import {
   loadPostsQuery,
   pagesBySlugQuery,
   postBySlugQuery,
+  searchPostsQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
 import {
   AboutPagePayload,
   HomePagePayload,
-  MenuItem,
-  PagePayload,
+  // MenuItem,
+  // PagePayload,
   Post,
   PostsQueryPayload,
   SettingsPayload,
@@ -103,22 +104,32 @@ export function loadPost(slug: string) {
 
 export async function loadPosts(query: string, limit: number, page: number) {
   const skipAmount = (page - 1) * limit
+  let data: PostsQueryPayload
+  console.log(!!query)
 
-  const data = await loadQuery<PostsQueryPayload>(
-    loadPostsQuery,
-    { query: `${query}*`, start: skipAmount, end: skipAmount + limit },
-    { next: { tags: ['post'] } },
-  ).then((res) => res.data)
+  if (query) {
+    data = await loadQuery<PostsQueryPayload>(
+    searchPostsQuery,
+      { query: `${query}*`, start: skipAmount, end: skipAmount + limit },
+      { next: { tags: ['post'] } },
+    ).then((res) => res.data)
+  } else {
+    data = await loadQuery<PostsQueryPayload>(
+      loadPostsQuery,
+      { start: skipAmount, end: skipAmount + limit },
+      { next: { tags: ['post'] } },
+    ).then((res) => res.data)
+  }
 
   const totalPages = Math.ceil(data.totalPosts / limit)
 
   return { data: data.posts, totalPages: totalPages }
 }
 
-export function loadPage(slug: string) {
-  return loadQuery<PagePayload | null>(
-    pagesBySlugQuery,
-    { slug },
-    { next: { tags: [`page:${slug}`] } },
-  )
-}
+// export function loadPage(slug: string) {
+//   return loadQuery<PagePayload | null>(
+//     pagesBySlugQuery,
+//     { slug },
+//     { next: { tags: [`page:${slug}`] } },
+//   )
+// }

@@ -1,6 +1,5 @@
 'use client'
 
-import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import HamburgerButton from './HamburgerButton'
@@ -15,7 +14,9 @@ const MobileNav = () => {
   return (
     <>
       <HamburgerButton active={isMobileNavOpen} handleClick={toggleMobileNav} />
-      {isMobileNavOpen && <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/70 h-screen w-screen"></div>}
+      {isMobileNavOpen && (
+        <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/70 h-screen w-screen"></div>
+      )}
       <div
         className={`${
           isMobileNavOpen ? 'right-0' : 'right-[-110%]'

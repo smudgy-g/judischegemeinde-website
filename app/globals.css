@@ -37,6 +37,9 @@
 }
 
 @layer components {
+  .hero-heading {
+    @apply text-[10vw] font-extrabold leading-tight uppercase tracking-tighter
+  }
   .h1-extrabold {
     @apply text-7xl font-extrabold tracking-tight md:text-8xl lg:text-9xl;
   }

@@ -17,9 +17,16 @@ export default defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'heading',
+      description: 'This field is the heading oused on the landing page.',
+      title: 'Title',
+      type: 'string',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'overview',
       description:
-        'Used both for the <meta> description tag for SEO, and the website subheader.',
+        'Used both for the <meta> description tag for SEO, and the website subheader on the landing page.',
       title: 'Description',
       type: 'array',
       of: [

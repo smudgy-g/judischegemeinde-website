@@ -11,13 +11,13 @@ import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { apiVersion, dataset, projectId, studioUrl } from '@/sanity/lib/api'
 import { locate } from '@/sanity/plugins/locate'
 import { pageStructure, singletonPlugin } from '@/sanity/plugins/settings'
-import page from '@/sanity/schemas/documents/page'
+// import page from '@/sanity/schemas/documents/page'
+import about from '@/sanity/schemas/singletons/about'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 
 import author from './sanity/schemas/documents/author'
 import post from './sanity/schemas/documents/post'
-import about from './sanity/schemas/singletons/about'
 import link from './sanity/schemas/objects/link'
 
 const title =
@@ -32,11 +32,11 @@ export default defineConfig({
     // If you want more content types, you can add them to this array
     types: [
       // Singletons
-      about,
       home,
       settings,
+      about,
       // Documents
-      page,
+      // page,
       post,
       author,
       // Objects

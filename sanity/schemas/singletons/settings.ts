@@ -11,10 +11,19 @@ export default defineType({
   fields: [
     defineField({
       name: 'title',
-      description: 'This field is the title of your website. It will be used for the footer',
+      description:
+        'This field is the title of your website. It will be used for the footer',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'socialLinks',
+      title: 'Social Media Links',
+      description:
+        'Used in the footer, contact page and about page as a list of external social media links.',
+      type: 'array',
+      of: [{ type: 'link' }],
     }),
     // defineField({
     //   name: 'menuItems',
@@ -32,12 +41,11 @@ export default defineType({
     //         {
     //           type: 'page',
     //         },
-           
     //       ],
     //     },
     //   ],
     // }),
-    
+
     defineField({
       name: 'footer',
       description:
@@ -79,7 +87,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Menu Items',
+        title: 'Settings',
       }
     },
   },

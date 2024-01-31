@@ -19,11 +19,11 @@ export default function Collection({
   paginate?: boolean
 }) {
   return (
-    <section>
-      {title && <h2 className="h2-bold">{title}</h2>}
+    <section className='flex flex-col items-stretch'>
+      {title && <h2 className="h2-bold self-start">{title}</h2>}
       {posts.length > 0 ? (
         <>
-          <div className="mb-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+          <div className="mb-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
             {posts.map((post) => (
               <PostPreviewCard
                 key={post._id}
@@ -36,6 +36,7 @@ export default function Collection({
               />
             ))}
           </div>
+          <div className='self-center'>
           {totalPages > 1 && (
             <Pagination
               urlParamName={urlParamName}
@@ -43,6 +44,8 @@ export default function Collection({
               totalPages={totalPages}
             />
           )} 
+
+          </div>
         </>
       ) : (
         <div className="flex items-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">

@@ -25,7 +25,7 @@ const PostsPage = async ({ searchParams }: PostsPageProps) => {
 
       <Collection
         posts={posts}
-        title={searchText && 'Results'}
+        title={searchText ? 'Results' : 'All Posts'}
         page={page}
         totalPages={totalPages}
         paginate

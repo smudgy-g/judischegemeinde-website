@@ -37,6 +37,14 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'coverImage',
+      title: 'Cover Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       type: 'array',
       name: 'content',
       title: 'Content',
@@ -96,13 +104,7 @@ export default defineType({
         }),
       ],
     }),
-    defineField({
-      name: "socialLinks",
-      title: "Social Media Links",
-      description: "Used in the footer, contact page and about page as a list of external social media links.",
-      type: "array",
-      of: [{ type: "link" }],
-    }),
+
   ],
   
   preview: {
