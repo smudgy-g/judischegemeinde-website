@@ -5,14 +5,14 @@ import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
 import PostDate from '@/components/shared/PostDate'
-import type { PostPayload } from '@/types'
+import type { Post } from '@/types'
 
-export interface ProjectPageProps {
-  data: PostPayload | null
+export interface PostPageProps {
+  data: Post | null
   encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-export function PostPage({ data, encodeDataAttribute }: ProjectPageProps) {
+export function PostPage({ data, encodeDataAttribute }: PostPageProps) {
   const { coverImage, title, author, content, excerpt, date } = data ?? {}
 
   return (

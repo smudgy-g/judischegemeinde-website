@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { PostPayload } from '@/types'
+import { Post } from '@/types'
 
 import { Button } from '../ui/button'
 import AuthorAvatar from './AuthorAvatar'
@@ -22,7 +22,7 @@ export default function PostPreviewCard({
   excerpt,
   author,
   slug,
-}: Omit<PostPayload, '_id'>) {
+}: Omit<Post, '_id'>) {
   return (
     <Card>
       <CardHeader>

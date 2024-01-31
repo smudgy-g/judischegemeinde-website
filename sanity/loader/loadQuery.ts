@@ -6,13 +6,10 @@ import { draftMode } from 'next/headers'
 import { client } from '@/sanity/lib/client'
 import {
   aboutPageQuery,
-  allPostsQuery,
   homePageQuery,
   loadPostsQuery,
   pagesBySlugQuery,
-  postAndMoreStoriesQuery,
   postBySlugQuery,
-  searchPostsQuery,
   settingsQuery,
 } from '@/sanity/lib/queries'
 import { token } from '@/sanity/lib/token'
@@ -21,7 +18,8 @@ import {
   HomePagePayload,
   MenuItem,
   PagePayload,
-  PostPayload,
+  Post,
+  PostsQueryPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -96,20 +94,25 @@ export function loadAboutPage() {
 }
 
 export function loadPost(slug: string) {
-  return loadQuery<PostPayload | null>(
+  return loadQuery<Post | null>(
     postBySlugQuery,
     { slug },
     { next: { tags: [`post:${slug}`] } },
   )
 }
 
-export async function loadPosts(query: string) {
-  const posts = await loadQuery<PostPayload[]>(
+export async function loadPosts(query: string, limit: number, page: number) {
+  const skipAmount = (page - 1) * limit
+
+  const data = await loadQuery<PostsQueryPayload>(
     loadPostsQuery,
-    { query: `${query}*` },
+    { query: `${query}*`, start: skipAmount, end: skipAmount + limit },
     { next: { tags: ['post'] } },
-  )
-  return posts.data
+  ).then((res) => res.data)
+
+  const totalPages = Math.ceil(data.totalPosts / limit)
+
+  return { data: data.posts, totalPages: totalPages }
 }
 
 export function loadPage(slug: string) {

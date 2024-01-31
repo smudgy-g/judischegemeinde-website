@@ -2,15 +2,18 @@ import Collection from '@/components/shared/Collection'
 import { Header } from '@/components/shared/Header'
 import Search from '@/components/shared/Search'
 import { loadPosts } from '@/sanity/loader/loadQuery'
-import { PostPayload } from '@/types'
 
 type PostsPageProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
 const PostsPage = async ({ searchParams }: PostsPageProps) => {
+  const page = Number(searchParams?.page) || 1
   const searchText = (searchParams?.query as string) || ''
-  const posts = (await loadPosts(searchText)) as PostPayload[]
+  const limit = 2
+  const { data: posts, totalPages } = await loadPosts(searchText, limit, page)
+  console.log('totalPages page component', totalPages)
+  console.log('page page component', page)
 
   return (
     <section className="wrapper mt-8">
@@ -22,7 +25,13 @@ const PostsPage = async ({ searchParams }: PostsPageProps) => {
         <Search />
       </div>
 
-      <Collection posts={posts} title={searchText && 'Results'} />
+      <Collection
+        posts={posts}
+        title={searchText && 'Results'}
+        page={page}
+        totalPages={totalPages}
+        paginate
+      />
     </section>
   )
 }

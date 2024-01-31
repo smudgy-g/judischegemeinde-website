@@ -12,12 +12,25 @@ export interface LinkPayload {
   name: string;
 }
 
+export interface Post {
+  _id: string
+  title: string
+  coverImage?: any
+  date?: string
+  _updatedAt?: string
+  excerpt?: string
+  author?: AuthorPayload
+  slug?: string
+  content?: any
+  video?: any
+}
+
 // Page payloads
 
 export interface HomePagePayload {
   footer?: PortableTextBlock[]
   overview?: PortableTextBlock[]
-  showcasePosts?: PostPayload[]
+  showcasePosts?: Post[]
   title?: string
 }
 
@@ -42,17 +55,9 @@ export interface AuthorPayload {
   picture?: any
 }
 
-export interface PostPayload {
-  _id: string
-  title?: string
-  coverImage?: any
-  date?: string
-  _updatedAt?: string
-  excerpt?: string
-  author?: AuthorPayload
-  slug?: string
-  content?: any
-  video?: any
+export interface PostsQueryPayload {
+  posts: Post[],
+  totalPosts: number
 }
 
 export interface SettingsPayload {

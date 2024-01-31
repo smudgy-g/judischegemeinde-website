@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { PostPayload } from '@/types'
+import { Post } from '@/types'
 
 import {
   Card,
@@ -16,7 +16,7 @@ import PostDate from './PostDate'
 
 export default function HeroPost(
   props: Pick<
-    PostPayload,
+    Post,
     'title' | 'coverImage' | 'date' | 'excerpt' | 'author' | 'slug'
   >,
 ) {
@@ -27,7 +27,7 @@ export default function HeroPost(
       {/* </div> */}
       <CardHeader>
         <HeroImageBox slug={slug} title={title!} image={coverImage} priority />
-      <CardTitle>
+        <CardTitle>
           <Link href={`/posts/${slug}`} className="hover:underline">
             {title}
           </Link>

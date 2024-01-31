@@ -63,7 +63,7 @@ export const homePageQuery = groq`
       ${postFields}
     }
   }
-`;
+`
 
 export const aboutPageQuery = groq`
   *[_type == "home"][0]{
@@ -75,32 +75,16 @@ export const aboutPageQuery = groq`
       
     }
   }
-`;
-
-
-// export const allPostsQuery = groq`
-// *[_type == "post"] | order(date desc, _updatedAt desc) {
-//   ${postFields}
-// }`
-
-export const loadPostsQuery = groq`
-*[_type == "post" && (pt::text(content) match $query || title match $query || excerpt match $query)] 
-  | score(pt::text(content) match $query, boost(title match $query, 3), boost(excerpt match $query, 2)) {
-    ${postFields}
-  }
 `
 
-// export const postAndMoreStoriesQuery = groq`
-// {
-//   "post": *[_type == "post" && slug.current == $slug] | order(_updatedAt desc) [0] {
-//     content,
-//     ${postFields}
-//   },
-//   "morePosts": *[_type == "post" && slug.current != $slug] | order(date desc, _updatedAt desc) [0...2] {
-//     content,
-//     ${postFields}
-//   }
-// }`
+export const loadPostsQuery = groq`{
+"totalPosts": count(*[_type == "post"]),
+"posts": *[_type == "post" && (pt::text(content) match $query || title match $query || excerpt match $query)] 
+| score(pt::text(content) match $query, boost(title match $query, 3), boost(excerpt match $query, 2)) | order(date desc, _updatedAt desc) [$start...$end] {
+  ${postFields}
+  }
+}
+`
 
 export const postSlugsQuery = groq`
 *[_type == "post" && defined(slug.current)][].slug.current
