@@ -10,7 +10,7 @@ type PostsPageProps = {
 const PostsPage = async ({ searchParams }: PostsPageProps) => {
   const page = Number(searchParams?.page) || 1
   const searchText = (searchParams?.query as string) || ''
-  const limit = 2
+  const limit = 3
   const { data: posts, totalPages } = await loadPosts(searchText, limit, page)
   console.log('totalPages page component', totalPages)
   console.log('page page component', page)
