@@ -12,8 +12,6 @@ const PostsPage = async ({ searchParams }: PostsPageProps) => {
   const searchText = (searchParams?.query as string) || ''
   const limit = 3
   const { data: posts, totalPages } = await loadPosts(searchText, limit, page)
-  console.log('totalPages page component', totalPages)
-  console.log('page page component', page)
 
   return (
     <section className="wrapper mt-8">
