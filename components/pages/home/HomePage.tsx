@@ -8,6 +8,7 @@ import HeroPost from '@/components/shared/HeroPost'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { cn } from '@/lib/utils'
+import { urlForImage } from '@/sanity/lib/utils'
 import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
@@ -16,13 +17,21 @@ export interface HomePageProps {
 }
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
-  const { overview = [], showcaseArticles = [], heading = '', backgroundImage } = data ?? {}
+  const {
+    overview = [],
+    showcaseArticles = [],
+    heading = '',
+    backgroundImage,
+  } = data ?? {}
   const [heroPost, ...articles] = showcaseArticles ?? []
-  console.log(backgroundImage)
+  const bgImage = backgroundImage && urlForImage(backgroundImage)?.url()
 
   return (
     <>
-      <section className={cn("relative wrapper h-[80vh] flex flex-col items-center justify-center p-4 z-1 bg-center bg-cover")}>
+      <section
+        className="relative wrapper h-[80vh] flex flex-col items-center justify-center p-4 z-1 bg-center bg-cover"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      >
         <div className="bg-white absolute h-full w-full flex flex-col overflow-hidden z-0 opacity-60"></div>
 
         {heading && (
