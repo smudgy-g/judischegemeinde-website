@@ -6,6 +6,12 @@ import type { PortableTextBlock } from '@portabletext/types'
 //   title?: string;
 // }
 
+export interface SocialLinks {
+  facebook?: string
+  instagram?: string
+  xTwitter?: string
+}
+
 export interface Link {
   href: string
   name: string
@@ -32,6 +38,7 @@ export interface HomePagePayload {
   overview?: PortableTextBlock[]
   footer?: PortableTextBlock[]
   showcaseArticles?: Article[]
+  backgroundImage?: any
 }
 
 export interface ImpressumPagePayload {
@@ -67,10 +74,11 @@ export interface ArticlesQueryPayload {
 
 export interface SettingsPayload {
   title?: string
-  socialMediaLinks?: string[]
+  socialMediaLinks?: SocialLinks
   // menuItems?: MenuItem[];
   footer: PortableTextBlock[]
   ogImage?: {
     title?: string
   }
+  logo?: any
 }

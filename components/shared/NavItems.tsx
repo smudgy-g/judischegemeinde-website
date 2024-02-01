@@ -4,15 +4,18 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
 import { navLinks } from '@/constants'
+import { cn } from '@/lib/utils'
 
 const NavItems = ({
   toggleMobileNav,
+  classesWrapper
 }: {
-  toggleMobileNav?: () => void
+  toggleMobileNav?: () => void,
+  classesWrapper?: string
 }) => {
   const pathname = usePathname()
   return (
-    <ul className="flex flex-col items-start md:flex-row">
+    <ul className={cn("flex flex-col items-start md:flex-row", classesWrapper)}>
       {navLinks.map((link) => {
         const isActive = pathname === link.route
         return (

@@ -19,12 +19,12 @@ export const settingsQuery = groq`
   *[_type == "settings"][0]{
     footer,
     title,
-    socialLinks[]->{
-      name,
-      href
-    },
-    
+    socialMediaLinks,
     ogImage,
+    logoImage {
+      ...,
+      "lqip": asset->metadata.lqip
+    },
   }
 `
 // menuItems[]->{
@@ -53,7 +53,11 @@ export const homePageQuery = groq`
     ...,
     showcaseArticles[] -> {
       ${articleFields}
-    }
+    },
+    backgroundImage {
+      ...,
+      "lqip": asset->metadata.lqip
+    },
   }
 `
 

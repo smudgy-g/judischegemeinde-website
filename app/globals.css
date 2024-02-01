@@ -53,8 +53,11 @@
     @apply bg-background text-foreground overflow-x-hidden;
   }
 
-  h1, h2, h3, h4 {
-    @apply text-primary
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-primary;
   }
 }
 
@@ -89,7 +92,7 @@
   }
 
   .link {
-    @apply hover:text-muted-foreground font-medium
+    @apply hover:text-muted-foreground font-medium;
   }
 }
 

@@ -7,6 +7,7 @@ import { Header } from '@/components/shared/Header'
 import HeroPost from '@/components/shared/HeroPost'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
+import { cn } from '@/lib/utils'
 import type { HomePagePayload } from '@/types'
 
 export interface HomePageProps {
@@ -15,15 +16,16 @@ export interface HomePageProps {
 }
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
-  const { overview = [], title = '', showcaseArticles = [], heading ='' } = data ?? {}
+  const { overview = [], showcaseArticles = [], heading = '', backgroundImage } = data ?? {}
   const [heroPost, ...articles] = showcaseArticles ?? []
+  console.log(backgroundImage)
 
   return (
     <>
-      <section className="wrapper h-[70vh] flex flex-col items-center justify-center p-4 z-1">
-        <div className="bg-gradient-to-tl from-indigo-200 via-red-200 to-yellow-100 absolute -top-[60px] h-[90vh] min-h-[320px] max-h-[600px] w-full -skew-y-6 flex flex-col overflow-hidden z-0"></div>
+      <section className={cn("relative wrapper h-[80vh] flex flex-col items-center justify-center p-4 z-1 bg-center bg-cover")}>
+        <div className="bg-white absolute h-full w-full flex flex-col overflow-hidden z-0 opacity-60"></div>
 
-        {title && (
+        {heading && (
           <h1 className="relative mt-12 hero-heading mb-10 strong text-center break-words text-primary">
             {heading}
           </h1>
@@ -40,18 +42,13 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           <Button size={'lg'} asChild className="font-bold">
             <Link href="/news">Explore Articles</Link>
           </Button>
-          <Button
-            variant={'secondary'}
-            size={'lg'}
-            asChild
-            className="font-bold"
-          >
+          <Button variant={'outline'} size={'lg'} asChild className="font-bold">
             <Link href="/about">About us</Link>
           </Button>
         </div>
       </section>
 
-      <section className="wrapper mt-10 md:mt-8 lg:mt-6 gap-12">
+      <section className="wrapper gap-12 bg-accent">
         <h2 className="h2-bold">Featured</h2>
         {heroPost && (
           <HeroPost
@@ -66,17 +63,17 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           {articles.length > 0 && (
             <Collection articles={articles} title="More" page={1} />
           )}
-          <Button size={'lg'}>
+          <Button size={'lg'} className="font-bold">
             <Link href="/news">Explore More</Link>
           </Button>
         </div>
       </section>
 
-      <section className="wrapper text-center my-8 bg-accent py-16">
+      <section className="wrapper flex flex-col justify-center items-center text-center bg-accent py-20 md:h-[70vh]">
         <h3 className="h3-bold">
           Want to know more? <br></br>Get in contact with us.
         </h3>
-        <Button asChild className="mt-8" size={'lg'}>
+        <Button asChild className="mt-8 font-bold" size={'lg'}>
           <Link href="/contact">Lets talk</Link>
         </Button>
       </section>

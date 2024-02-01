@@ -66,6 +66,15 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
+      name: 'backgroundImage',
+      title: 'Background Image',
+      description: 'This will the the background image for the landing page heading section.',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
+    }),
+    defineField({
       name: 'showcaseArticles',
       title: 'Showcase Articles',
       description:
