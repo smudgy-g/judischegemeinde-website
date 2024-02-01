@@ -1,77 +1,25 @@
-import { DocumentIcon, ImageIcon } from '@sanity/icons'
+import { BlockquoteIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
+  name: 'impressum',
+  title: 'Impressum',
   type: 'document',
-  name: 'page',
-  title: 'Page',
-  icon: DocumentIcon,
+  icon: BlockquoteIcon,
+  // Uncomment below to have edits publish automatically as you type
+  // liveEdit: true,
   fields: [
     defineField({
-      type: 'string',
-      name: 'title',
-      description: 'Used as the title shown in the menu bar.',
-      title: 'Title',
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      type: 'slug',
-      name: 'slug',
-      title: 'Slug',
-      options: {
-        source: 'title',
-      },
-      validation: (rule) => rule.required(),
-    }),
-    defineField({
-      type: 'string',
       name: 'heading',
-      description:
-        'Used both for the <meta> description tag for SEO, and the page header.',
-      title: 'Heading',
+      description: 'This field is the heading used on the impressum page.',
+      title: 'Title',
+      type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'overview',
-      description:
-        'Used both for the <meta> description tag for SEO, and the page subheader.',
-      title: 'Overview',
       type: 'array',
-      of: [
-        // Paragraphs
-        defineArrayMember({
-          lists: [],
-          marks: {
-            annotations: [],
-            decorators: [
-              {
-                title: 'Italic',
-                value: 'em',
-              },
-              {
-                title: 'Strong',
-                value: 'strong',
-              },
-            ],
-          },
-          styles: [],
-          type: 'block',
-        }),
-      ],
-      validation: (rule) => rule.max(155).required(),
-    }),
-    defineField({
-      name: 'coverImage',
-      title: 'Cover Image',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
-    }),
-    defineField({
-      type: 'array',
-      name: 'body',
-      title: 'Body',
+      name: 'content',
+      title: 'Content',
       description: "This is where you can write the page's content.",
       of: [
         // Paragraphs
@@ -130,11 +78,11 @@ export default defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'Impressum',
     },
     prepare({ title }) {
       return {
-        subtitle: 'Page',
+        subtitle: 'Impressum',
         title,
       }
     },

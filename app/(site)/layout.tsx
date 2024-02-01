@@ -46,7 +46,7 @@ export default async function IndexRoute({
   
   return (
     <>
-      <div className="flex min-h-screen flex-col bg-white text-black overflow-x-hidden">
+      <div className="flex min-h-screen flex-col overflow-x-hidden">
         <Suspense>
           <Navbar />
         </Suspense>

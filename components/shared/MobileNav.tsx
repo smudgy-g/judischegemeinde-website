@@ -15,7 +15,7 @@ const MobileNav = () => {
     <>
       <HamburgerButton active={isMobileNavOpen} handleClick={toggleMobileNav} />
       {isMobileNavOpen && (
-        <div className="fixed top-0 bottom-0 left-0 right-0 bg-black/70 h-screen w-screen"></div>
+        <div className="fixed top-0 bottom-0 left-0 right-0 bg-popover-foreground/80 h-screen w-screen"></div>
       )}
       <div
         className={`${

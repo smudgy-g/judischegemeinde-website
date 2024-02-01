@@ -42,7 +42,7 @@ export default function HeroImageBox(props: CoverImageProps) {
   return (
     <div className="sm:mx-0">
       {slug ? (
-        <Link href={`/posts/${slug}`} aria-label={title}>
+        <Link href={`/news/${slug}`} aria-label={title}>
           {image}
         </Link>
       ) : (

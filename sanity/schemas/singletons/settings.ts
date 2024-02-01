@@ -17,14 +17,16 @@ export default defineType({
       type: 'string',
       validation: (rule) => rule.required(),
     }),
-    defineField({
-      name: 'socialLinks',
+    {
       title: 'Social Media Links',
-      description:
-        'Used in the footer, contact page and about page as a list of external social media links.',
-      type: 'array',
-      of: [{ type: 'link' }],
-    }),
+      name: 'socialMediaLinks',
+      type: 'object',
+      fields: [
+        { name: 'facebook', type: 'string', title: 'Facebook' },
+        { name: 'instagram', type: 'string', title: 'Instagram' },
+        { name: 'xTwitter', type: 'string', title: 'X (Twitter)' },
+      ],
+    },
     // defineField({
     //   name: 'menuItems',
     //   title: 'Menu Item list',

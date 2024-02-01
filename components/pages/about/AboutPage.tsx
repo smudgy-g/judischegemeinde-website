@@ -1,11 +1,11 @@
 import type { EncodeDataAttributeCallback } from '@sanity/react-loader'
 
+import ArticleDate from '@/components/shared/ArticleDate'
 import AuthorAvatar from '@/components/shared/AuthorAvatar'
 import { CustomPortableText } from '@/components/shared/CustomPortableText'
 import { Header } from '@/components/shared/Header'
 import ImageBox from '@/components/shared/ImageBox'
-import PostDate from '@/components/shared/PostDate'
-import type { AboutPagePayload, Post } from '@/types'
+import type { AboutPagePayload, Article } from '@/types'
 
 export interface PageProps {
   data: AboutPagePayload | null

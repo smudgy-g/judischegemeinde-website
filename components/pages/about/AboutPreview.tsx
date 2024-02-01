@@ -2,9 +2,9 @@
 
 import { type QueryResponseInitial } from '@sanity/react-loader'
 
-import { aboutPageQuery, postBySlugQuery } from '@/sanity/lib/queries'
+import { aboutPageQuery, articleBySlugQuery } from '@/sanity/lib/queries'
 import { useQuery } from '@/sanity/loader/useQuery'
-import { AboutPagePayload, Post } from '@/types'
+import { AboutPagePayload, Article } from '@/types'
 
 import AboutPage from './AboutPage'
 

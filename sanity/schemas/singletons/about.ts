@@ -1,11 +1,11 @@
-import { DocumentIcon, ImageIcon } from "@sanity/icons";
+import { ImageIcon,UsersIcon } from "@sanity/icons";
 import { defineArrayMember, defineField, defineType } from "sanity";
 
 export default defineType({
   name: "about",
   title: "About",
   type: "document",
-  icon: DocumentIcon,
+  icon: UsersIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
@@ -109,7 +109,7 @@ export default defineType({
   
   preview: {
     select: {
-      title: "title",
+      title: "About",
     },
     prepare({ title }) {
       return {

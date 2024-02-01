@@ -18,8 +18,8 @@ export default defineType({
     }),
     defineField({
       name: 'heading',
-      description: 'This field is the heading oused on the landing page.',
-      title: 'Title',
+      description: 'This field is the heading used on the landing page.',
+      title: 'Heading',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -66,15 +66,15 @@ export default defineType({
       validation: (rule) => rule.max(155).required(),
     }),
     defineField({
-      name: 'showcasePosts',
-      title: 'Showcase Posts',
+      name: 'showcaseArticles',
+      title: 'Showcase Articles',
       description:
-        'These are the posts that will appear first on your landing page.',
+        'These are the articles that will appear first on your landing page.',
       type: 'array',
       of: [
         defineArrayMember({
           type: 'reference',
-          to: [{ type: 'post' }],
+          to: [{ type: 'article' }],
         }),
       ],
     }),

@@ -16,9 +16,10 @@ import about from '@/sanity/schemas/singletons/about'
 import home from '@/sanity/schemas/singletons/home'
 import settings from '@/sanity/schemas/singletons/settings'
 
+import article from './sanity/schemas/documents/article'
 import author from './sanity/schemas/documents/author'
-import post from './sanity/schemas/documents/post'
 import link from './sanity/schemas/objects/link'
+import impressum from './sanity/schemas/singletons/impressum'
 
 const title =
   process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || 'Judischegemeinde Website'
@@ -35,9 +36,10 @@ export default defineConfig({
       home,
       settings,
       about,
+      impressum,
       // Documents
       // page,
-      post,
+      article,
       author,
       // Objects
       link,
@@ -45,7 +47,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, about]),
+      structure: pageStructure([home, settings, about, impressum]),
     }),
     presentationTool({
       locate,
@@ -56,7 +58,7 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name, about.name]),
+    singletonPlugin([home.name, settings.name, about.name, impressum.name]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

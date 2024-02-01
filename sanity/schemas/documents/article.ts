@@ -5,8 +5,8 @@ import { defineField, defineType } from 'sanity'
 import authorType from './author'
 
 export default defineType({
-  name: 'post',
-  title: 'Post',
+  name: 'article',
+  title: 'Article',
   icon: BookIcon,
   type: 'document',
   fields: [

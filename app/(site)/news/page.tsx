@@ -1,17 +1,17 @@
 import Collection from '@/components/shared/Collection'
 import { Header } from '@/components/shared/Header'
 import Search from '@/components/shared/Search'
-import { loadPosts } from '@/sanity/loader/loadQuery'
+import { loadArticles } from '@/sanity/loader/loadQuery'
 
-type PostsPageProps = {
+type ArticlesRouteProps = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-const PostsPage = async ({ searchParams }: PostsPageProps) => {
+const ArticleRoute = async ({ searchParams }: ArticlesRouteProps) => {
   const page = Number(searchParams?.page) || 1
   const searchText = (searchParams?.query as string) || ''
   const limit = 3
-  const { data: posts, totalPages } = await loadPosts(searchText, limit, page)
+  const { data: articles, totalPages } = await loadArticles(searchText, limit, page)
 
   return (
     <section className="wrapper mt-8">
@@ -24,8 +24,8 @@ const PostsPage = async ({ searchParams }: PostsPageProps) => {
       </div>
 
       <Collection
-        posts={posts}
-        title={searchText ? 'Results' : 'All Posts'}
+        articles={articles}
+        title={searchText ? 'Results' : 'News'}
         page={page}
         totalPages={totalPages}
         paginate
@@ -34,4 +34,4 @@ const PostsPage = async ({ searchParams }: PostsPageProps) => {
   )
 }
 
-export default PostsPage
+export default ArticleRoute

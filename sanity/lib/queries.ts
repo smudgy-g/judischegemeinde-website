@@ -33,7 +33,7 @@ export const settingsQuery = groq`
 //   title
 // },
 
-const postFields = groq`
+const articleFields = groq`
   _id,
   title,
   date,
@@ -51,8 +51,8 @@ const postFields = groq`
 export const homePageQuery = groq`
   *[_type == "home"][0]{
     ...,
-    showcasePosts[] -> {
-      ${postFields}
+    showcaseArticles[] -> {
+      ${articleFields}
     }
   }
 `
@@ -70,29 +70,29 @@ export const aboutPageQuery = groq`
   }
 `
 
-export const loadPostsQuery = groq`{
-"totalPosts": count(*[_type == "post"]),
-"posts": *[_type == "post"] | order(date desc, _updatedAt desc) [$start...$end] {
-  ${postFields}
+export const loadArticlesQuery = groq`{
+"totalArticles": count(*[_type == "article"]),
+"articles": *[_type == "article"] | order(date desc, _updatedAt desc) [$start...$end] {
+  ${articleFields}
   }
 }
 `
 
-export const searchPostsQuery = groq`{
-"totalPosts": count(*[_type == "post" && (pt::text(content) match $query || title match $query || excerpt match $query)]),
-"posts": *[_type == "post" && (pt::text(content) match $query || title match $query || excerpt match $query)] 
+export const searchArticlesQuery = groq`{
+"totalArticles": count(*[_type == "article" && (pt::text(content) match $query || title match $query || excerpt match $query)]),
+"articles": *[_type == "article" && (pt::text(content) match $query || title match $query || excerpt match $query)] 
 | score(pt::text(content) match $query, boost(title match $query, 3), boost(excerpt match $query, 2)) | order(date desc, _updatedAt desc) [$start...$end] {
-  ${postFields}
+  ${articleFields}
   }
 }
 `
 
-export const postSlugsQuery = groq`
-*[_type == "post" && defined(slug.current)][].slug.current
+export const articleSlugsQuery = groq`
+*[_type == "article" && defined(slug.current)][].slug.current
 `
 
-export const postBySlugQuery = groq`
-*[_type == "post" && slug.current == $slug][0] {
-  ${postFields}
+export const articleBySlugQuery = groq`
+*[_type == "article" && slug.current == $slug][0] {
+  ${articleFields}
 }
 `

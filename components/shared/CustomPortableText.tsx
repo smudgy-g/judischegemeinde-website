@@ -3,7 +3,6 @@ import type { PortableTextBlock } from '@portabletext/types'
 import { Image } from 'sanity'
 
 import ImageBox from '@/components/shared/ImageBox'
-import { TimelineSection } from '@/components/shared/TimelineSection'
 
 export function CustomPortableText({
   paragraphClasses,
@@ -52,10 +51,7 @@ export function CustomPortableText({
           </div>
         )
       },
-      timeline: ({ value }) => {
-        const { items } = value || {}
-        return <TimelineSection timelines={items} />
-      },
+      
     },
   }
 

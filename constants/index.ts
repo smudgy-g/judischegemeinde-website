@@ -4,13 +4,14 @@ export const navLinks = [
     route: '/',
   },
   {
-    label: 'Posts',
-    route: '/posts',
+    label: 'News',
+    route: '/news',
   },
   {
     label: 'About',
     route: '/about',
   },
+  
   {
     label: 'Contact',
     route: '/contact',

@@ -15,8 +15,8 @@ export interface HomePageProps {
 }
 
 export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
-  const { overview = [], title = '', showcasePosts = [] } = data ?? {}
-  const [heroPost, ...posts] = showcasePosts
+  const { overview = [], title = '', showcaseArticles = [], heading ='' } = data ?? {}
+  const [heroPost, ...articles] = showcaseArticles ?? []
 
   return (
     <>
@@ -24,8 +24,8 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
         <div className="bg-gradient-to-tl from-indigo-200 via-red-200 to-yellow-100 absolute -top-[60px] h-[90vh] min-h-[320px] max-h-[600px] w-full -skew-y-6 flex flex-col overflow-hidden z-0"></div>
 
         {title && (
-          <h1 className="relative mt-12 hero-heading mb-10 strong text-center break-words">
-            {title}
+          <h1 className="relative mt-12 hero-heading mb-10 strong text-center break-words text-primary">
+            {heading}
           </h1>
         )}
         <div className="relative w-[90] md:w-[60vw] text-center">
@@ -36,9 +36,9 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             />
           )}
         </div>
-        <div className='relative flex gap-4 md:gap-8 mt-12'>
+        <div className="relative flex gap-4 md:gap-8 mt-12">
           <Button size={'lg'} asChild className="font-bold">
-            <Link href="/posts">Explore Posts</Link>
+            <Link href="/news">Explore Articles</Link>
           </Button>
           <Button
             variant={'secondary'}
@@ -49,33 +49,10 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
             <Link href="/about">About us</Link>
           </Button>
         </div>
-        {/* <Card className="relative mt-12 flex flex-col max-w-xl px-3 md:px-8  py-6">
-          <CardContent>
-            {overview && (
-              <CustomPortableText
-                value={overview}
-                paragraphClasses="text-xl lg:text-3xl"
-              />
-            )}
-          </CardContent>
-          <CardFooter className="flex gap-4 justify-start">
-            <Button size={'lg'} asChild className="font-bold">
-              <Link href="/posts">Explore Posts</Link>
-            </Button>
-            <Button
-              variant={'secondary'}
-              size={'lg'}
-              asChild
-              className="font-bold"
-            >
-              <Link href="/about">About us</Link>
-            </Button>
-          </CardFooter>
-        </Card> */}
       </section>
 
       <section className="wrapper mt-10 md:mt-8 lg:mt-6 gap-12">
-        <h3 className="h2-bold">Featured</h3>
+        <h2 className="h2-bold">Featured</h2>
         {heroPost && (
           <HeroPost
             title={heroPost.title}
@@ -86,16 +63,16 @@ export function HomePage({ data, encodeDataAttribute }: HomePageProps) {
           />
         )}
         <div className="mt-10 basis-1/3 flex flex-col items-center">
-          {posts.length > 0 && (
-            <Collection posts={posts} title="More" page={1} />
+          {articles.length > 0 && (
+            <Collection articles={articles} title="More" page={1} />
           )}
           <Button size={'lg'}>
-            <Link href="/posts">Explore More</Link>
+            <Link href="/news">Explore More</Link>
           </Button>
         </div>
       </section>
 
-      <section className="wrapper text-center my-20">
+      <section className="wrapper text-center my-8 bg-accent py-16">
         <h3 className="h3-bold">
           Want to know more? <br></br>Get in contact with us.
         </h3>

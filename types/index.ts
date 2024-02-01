@@ -7,11 +7,11 @@ import type { PortableTextBlock } from '@portabletext/types'
 // }
 
 export interface Link {
-  href: string;
-  name: string;
+  href: string
+  name: string
 }
 
-export interface Post {
+export interface Article {
   _id: string
   title: string
   coverImage?: any
@@ -31,7 +31,13 @@ export interface HomePagePayload {
   heading?: string
   overview?: PortableTextBlock[]
   footer?: PortableTextBlock[]
-  showcasePosts?: Post[]
+  showcaseArticles?: Article[]
+}
+
+export interface ImpressumPagePayload {
+  heading?: string
+  overview?: PortableTextBlock[]
+  content?: PortableTextBlock[]
 }
 
 export interface AboutPagePayload {
@@ -47,23 +53,21 @@ export interface AboutPagePayload {
 //   overview?: PortableTextBlock[]
 //   title?: string
 //   // slug?: string
-//   coverImage?: any
 // }
-
 
 export interface AuthorPayload {
   name?: string
   picture?: any
 }
 
-export interface PostsQueryPayload {
-  posts: Post[],
-  totalPosts: number
+export interface ArticlesQueryPayload {
+  articles: Article[]
+  totalArticles: number
 }
 
 export interface SettingsPayload {
   title?: string
-  socialLinks?: Link[];
+  socialMediaLinks?: string[]
   // menuItems?: MenuItem[];
   footer: PortableTextBlock[]
   ogImage?: {

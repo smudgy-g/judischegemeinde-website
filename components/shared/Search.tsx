@@ -47,7 +47,7 @@ const Search = () => {
       />
       <Input
         type="text"
-        placeholder="Search our posts..."
+        placeholder="Search our news..."
         onChange={(e) => setQuery(e.target.value)}
         className='pl-12'
       />
