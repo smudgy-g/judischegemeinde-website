@@ -2,6 +2,7 @@ import type { PortableTextBlock } from '@portabletext/types'
 import Link from 'next/link'
 
 import { CustomPortableText } from '@/components//shared/CustomPortableText'
+import SocialLink from '@/components/shared/SocialLinksList'
 import type { SettingsPayload } from '@/types'
 
 interface FooterProps {
@@ -12,7 +13,7 @@ export default function Footer(props: FooterProps) {
   const footer = data?.footer || ([] as PortableTextBlock[])
   const title = data?.title || ''
 
-  const { facebook, instagram, xTwitter } = data?.socialMediaLinks || {}
+  const socialLinks = data?.socialMediaLinks || {}
 
   return (
     <footer className="bottom-0 w-full flex flex-row justify-between md:items-center bg-white px-6 py-5 border-t md:py-3">
@@ -29,7 +30,7 @@ export default function Footer(props: FooterProps) {
           />
         )}
       </div>
-      <div className="">
+      <div className="space-y-3 flex md:basis-1/2 flex-col md:flex-row-reverse justify-between md:items-center">
         <div className="flex flex-col items-end md:gap-2">
           <Link href="/impressum" className="link">
             Impressum
@@ -37,23 +38,20 @@ export default function Footer(props: FooterProps) {
           <Link href="/agb" className="link">
             AGBs
           </Link>
+          <Link href="/agb" className="link">
+            Press Kit
+          </Link>
         </div>
         <div className="flex items-end md:gap-2">
-          {facebook && (
-            <Link href={facebook} className="link">
-              Facebook
-            </Link>
-          )}
-          {instagram && (
-            <Link href={instagram} className="link">
-              Insta
-            </Link>
-          )}
-          {xTwitter && (
-            <Link href={xTwitter} className="link">
-              X
-            </Link>
-          )}
+          <div className="flex justify-between w-full">
+            {Object.entries(socialLinks).map(([key, value]) => {
+              if (value && value.trim() !== '') {
+                return (
+                  <SocialLink href={value} type={key} key={key} size={20} />
+                )
+              }
+            })}
+          </div>
         </div>
       </div>
     </footer>

@@ -80,5 +80,5 @@ export interface SettingsPayload {
   ogImage?: {
     title?: string
   }
-  logo?: any
+  logoImage?: any
 }
