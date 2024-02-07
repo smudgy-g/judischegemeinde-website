@@ -86,7 +86,7 @@ export const impressumPageQuery = groq`
 export const agbPageQuery = groq`
   *[_type == "agb"][0]{
     _id,
-    heading
+    heading,
     content,
    
   }
