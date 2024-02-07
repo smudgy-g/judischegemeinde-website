@@ -12,7 +12,7 @@ export default defineType({
     defineField({
       name: 'heading',
       description: 'This field is the heading used on the AGB page.',
-      title: 'Title',
+      title: 'Heading',
       type: 'string',
       validation: (rule) => rule.required(),
     }),

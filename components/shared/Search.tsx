@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
+import qs from 'query-string'
 import { useEffect, useState } from 'react'
 
 import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils'
@@ -22,6 +23,10 @@ const Search = () => {
           key: 'query',
           value: query,
         })
+
+        const parsedUrl = qs.parseUrl(newUrl)
+        delete parsedUrl.query.page
+        newUrl = qs.stringifyUrl(parsedUrl, { skipNull: true })
       } else {
         newUrl = removeKeysFromQuery({
           params: searchParams.toString(),
@@ -43,13 +48,13 @@ const Search = () => {
         alt="search"
         width={24}
         height={24}
-        className='absolute left-4'
+        className="absolute left-4"
       />
       <Input
         type="text"
         placeholder="Search our news..."
         onChange={(e) => setQuery(e.target.value)}
-        className='pl-12'
+        className="pl-12"
       />
     </div>
   )

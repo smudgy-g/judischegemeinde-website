@@ -6,9 +6,11 @@ import { draftMode } from 'next/headers'
 import { client } from '@/sanity/lib/client'
 import {
   aboutPageQuery,
+  agbPageQuery,
   articleBySlugQuery,
   articleSlugsQuery,
   homePageQuery,
+  impressumPageQuery,
   loadArticlesQuery,
   pagesBySlugQuery,
   searchArticlesQuery,
@@ -17,11 +19,12 @@ import {
 import { token } from '@/sanity/lib/token'
 import {
   AboutPagePayload,
-  HomePagePayload,
   // MenuItem,
   // PagePayload,
   Article,
   ArticlesQueryPayload,
+  HomePagePayload,
+  ImpressumAGBPayload,
   SettingsPayload,
 } from '@/types'
 
@@ -94,6 +97,20 @@ export function loadAboutPage() {
     { next: { tags: ['about'] } },
   )
 }
+export function loadImpressumPage() {
+  return loadQuery<ImpressumAGBPayload | null>(
+    impressumPageQuery,
+    {},
+    { next: { tags: ['impressum'] } },
+  )
+}
+export function loadAGBPage() {
+  return loadQuery<ImpressumAGBPayload | null>(
+    agbPageQuery,
+    {},
+    { next: { tags: ['agb'] } },
+  )
+}
 
 export function loadArticle(slug: string) {
   return loadQuery<Article | null>(
@@ -109,7 +126,7 @@ export async function loadArticles(query: string, limit: number, page: number) {
 
   if (query) {
     data = await loadQuery<ArticlesQueryPayload>(
-    searchArticlesQuery,
+      searchArticlesQuery,
       { query: `${query}*`, start: skipAmount, end: skipAmount + limit },
       { next: { tags: ['article'] } },
     ).then((res) => res.data)

@@ -41,15 +41,8 @@ export interface HomePagePayload {
   backgroundImage?: any
 }
 
-export interface ImpressumPagePayload {
+export interface ImpressumAGBPayload {
   heading?: string
-  overview?: PortableTextBlock[]
-  content?: PortableTextBlock[]
-}
-
-export interface AGBPagePayload {
-  heading?: string
-  overview?: PortableTextBlock[]
   content?: PortableTextBlock[]
 }
 

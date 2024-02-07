@@ -75,6 +75,23 @@ export const aboutPageQuery = groq`
   }
 `
 
+export const impressumPageQuery = groq`
+  *[_type == "impressum"][0]{
+    _id,
+    heading,
+    content,
+  }
+`
+
+export const agbPageQuery = groq`
+  *[_type == "agb"][0]{
+    _id,
+    heading
+    content,
+   
+  }
+`
+
 export const loadArticlesQuery = groq`{
 "totalArticles": count(*[_type == "article"]),
 "articles": *[_type == "article"] | order(date desc, _updatedAt desc) [$start...$end] {
