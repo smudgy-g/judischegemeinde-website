@@ -35,6 +35,20 @@ export default defineType({
         { name: 'xTwitter', type: 'string', title: 'X (Twitter)' },
       ],
     },
+    {
+      title: 'Press Kit',
+      name: 'press_kit',
+      type: 'file',
+      description:
+        'This is a downloadable file. The link will be put in the footer.',
+      fields: [
+        {
+          name: 'description',
+          type: 'string',
+          title: 'Description',
+        },
+      ],
+    },
     // defineField({
     //   name: 'menuItems',
     //   title: 'Menu Item list',

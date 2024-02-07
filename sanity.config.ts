@@ -19,6 +19,7 @@ import settings from '@/sanity/schemas/singletons/settings'
 import article from './sanity/schemas/documents/article'
 import author from './sanity/schemas/documents/author'
 import link from './sanity/schemas/objects/link'
+import agb from './sanity/schemas/singletons/agb'
 import impressum from './sanity/schemas/singletons/impressum'
 
 const title =
@@ -33,6 +34,7 @@ export default defineConfig({
     // If you want more content types, you can add them to this array
     types: [
       // Singletons
+      agb,
       home,
       settings,
       about,
@@ -47,7 +49,7 @@ export default defineConfig({
   },
   plugins: [
     deskTool({
-      structure: pageStructure([home, settings, about, impressum]),
+      structure: pageStructure([home, settings, about, impressum, agb]),
     }),
     presentationTool({
       locate,
@@ -58,7 +60,13 @@ export default defineConfig({
       },
     }),
     // Configures the global "new document" button, and document actions, to suit the Settings document singleton
-    singletonPlugin([home.name, settings.name, about.name, impressum.name]),
+    singletonPlugin([
+      home.name,
+      settings.name,
+      about.name,
+      impressum.name,
+      agb.name,
+    ]),
     // Add an image asset source for Unsplash
     unsplashImageAsset(),
     // Vision lets you query your content with GROQ in the studio

@@ -1,17 +1,17 @@
-import { BlockquoteIcon, ImageIcon } from '@sanity/icons'
+import { BlockContentIcon, ImageIcon } from '@sanity/icons'
 import { defineArrayMember, defineField, defineType } from 'sanity'
 
 export default defineType({
-  name: 'impressum',
-  title: 'Impressum',
+  name: 'agb',
+  title: 'AGB',
   type: 'document',
-  icon: BlockquoteIcon,
+  icon: BlockContentIcon,
   // Uncomment below to have edits publish automatically as you type
   // liveEdit: true,
   fields: [
     defineField({
       name: 'heading',
-      description: 'This field is the heading used on the impressum page.',
+      description: 'This field is the heading used on the AGB page.',
       title: 'Title',
       type: 'string',
       validation: (rule) => rule.required(),
@@ -49,7 +49,7 @@ export default defineType({
   preview: {
     prepare() {
       return {
-        title: 'Impressum',
+        title: 'AGB',
       }
     },
   },

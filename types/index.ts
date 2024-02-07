@@ -47,6 +47,12 @@ export interface ImpressumPagePayload {
   content?: PortableTextBlock[]
 }
 
+export interface AGBPagePayload {
+  heading?: string
+  overview?: PortableTextBlock[]
+  content?: PortableTextBlock[]
+}
+
 export interface AboutPagePayload {
   title?: string
   overview?: PortableTextBlock[]
@@ -76,6 +82,8 @@ export interface SettingsPayload {
   title?: string
   socialMediaLinks?: SocialLinks
   // menuItems?: MenuItem[];
+  press_kitURL?: string
+
   footer: PortableTextBlock[]
   ogImage?: {
     title?: string

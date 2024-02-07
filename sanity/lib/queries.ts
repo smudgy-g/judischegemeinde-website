@@ -25,6 +25,7 @@ export const settingsQuery = groq`
       ...,
       "lqip": asset->metadata.lqip
     },
+    "press_kitURL": press_kit.asset->url
   }
 `
 // menuItems[]->{

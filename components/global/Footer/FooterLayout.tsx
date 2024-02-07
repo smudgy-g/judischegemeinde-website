@@ -12,7 +12,7 @@ export default function Footer(props: FooterProps) {
   const { data } = props
   const footer = data?.footer || ([] as PortableTextBlock[])
   const title = data?.title || ''
-
+  const pressKitURL = data?.press_kitURL
   const socialLinks = data?.socialMediaLinks || {}
 
   return (
@@ -31,19 +31,21 @@ export default function Footer(props: FooterProps) {
         )}
       </div>
       <div className="space-y-3 flex md:basis-1/2 flex-col md:flex-row-reverse justify-between md:items-center">
-        <div className="flex flex-col items-end md:gap-2">
+        <div className="flex flex-col gap-2 items-end">
           <Link href="/impressum" className="link">
             Impressum
           </Link>
           <Link href="/agb" className="link">
             AGBs
           </Link>
-          <Link href="/agb" className="link">
+          {pressKitURL && (
+            <Link href={`${pressKitURL}?dl=`} className="link">
             Press Kit
           </Link>
+          )}
         </div>
         <div className="flex items-end md:gap-2">
-          <div className="flex justify-between w-full">
+          <div className="flex gap-3 w-full">
             {Object.entries(socialLinks).map(([key, value]) => {
               if (value && value.trim() !== '') {
                 return (
