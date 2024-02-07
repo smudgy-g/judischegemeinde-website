@@ -3,17 +3,15 @@ import Link from 'next/link'
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
 import { Article } from '@/types'
 
-import { Button } from '../ui/button'
+import ArticleDate from './ArticleDate'
 import AuthorAvatar from './AuthorAvatar'
 import ImageBox from './ImageBox'
-import ArticleDate from './ArticleDate'
 
 export default function ArticlePreviewCard({
   title,
@@ -24,21 +22,21 @@ export default function ArticlePreviewCard({
   slug,
 }: Omit<Article, '_id'>) {
   return (
-    <Card className="max-w-md">
+    <Card className="flex flex-col max-w-md">
       <CardHeader>
         <Link href={`/news/${slug}`} className="hover:underline">
           <ImageBox alt={title} image={coverImage} />
         </Link>
-          <CardTitle>
-            <Link
-              href={`/news/${slug}`}
-              className="uppercase tracking-tighter font-bold text-4xl"
-            >
-              {title}
-            </Link>
-          </CardTitle>
+        <CardTitle>
+          <Link
+            href={`/news/${slug}`}
+            className="uppercase tracking-tighter font-bold text-3xl"
+          >
+            {title}
+          </Link>
+        </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="flex-1">
         {date && <ArticleDate dateString={date} />}
         {excerpt && (
           <p className="mb-4 text-sm md:text-md leading-relaxed line-clamp-3">
@@ -46,12 +44,8 @@ export default function ArticlePreviewCard({
           </p>
         )}
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="">
         {author && <AuthorAvatar name={author.name} picture={author.picture} />}
-
-        <Button asChild variant={'outline'} className="hidden md:visible">
-          <Link href={`/news/${slug}`}>Read more</Link>
-        </Button>
       </CardFooter>
     </Card>
   )

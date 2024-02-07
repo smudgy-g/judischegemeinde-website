@@ -1,7 +1,7 @@
 import { Article } from '@/types'
 
-import Pagination from './Pagination'
 import ArticlePreviewCard from './ArticlePreviewCard'
+import Pagination from './Pagination'
 
 export default function Collection({
   articles,
@@ -9,7 +9,7 @@ export default function Collection({
   page,
   totalPages = 0,
   urlParamName,
-  paginate
+  paginate,
 }: {
   articles: Article[]
   title?: string
@@ -19,7 +19,7 @@ export default function Collection({
   paginate?: boolean
 }) {
   return (
-    <section className='flex flex-col items-stretch'>
+    <section className="flex flex-col items-stretch">
       {title && <h2 className="h2-bold self-start">{title}</h2>}
       {articles.length > 0 ? (
         <>
@@ -36,20 +36,21 @@ export default function Collection({
               />
             ))}
           </div>
-          <div className='self-center'>
-          {totalPages > 1 && (
-            <Pagination
-              urlParamName={urlParamName}
-              page={page}
-              totalPages={totalPages}
-            />
-          )} 
-
+          <div className="self-center">
+            {totalPages > 1 && (
+              <Pagination
+                urlParamName={urlParamName}
+                page={page}
+                totalPages={totalPages}
+              />
+            )}
           </div>
         </>
       ) : (
         <div className="flex items-center wrapper min-h-[200px] w-full flex-col gap-3 rounded-[14px] bg-grey-50 py-28 text-center">
-          <h3 className="h3-bold md:h5-bold">There are currently no articles</h3>
+          <h3 className="h3-bold md:h5-bold">
+            There are currently no articles
+          </h3>
           <p className="">Please come back later.</p>
         </div>
       )}

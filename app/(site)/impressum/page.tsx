@@ -21,7 +21,7 @@ export async function generateMetadata(
   }
 }
 
-export default async function AGBPageRoute() {
+export default async function ImpressumPageRoute() {
   const initial = await loadImpressumPage()
 
   if (draftMode().isEnabled) {
